@@ -1,0 +1,35 @@
+During the packet capture session on my Kali Linux machine, I visited a website (YouTube.com) and simultaneously pinged Google.com. The capture was performed for approximately one minute on the active network interface using Wireshark.
+
+From the captured traffic, I identified multiple network protocols in action, confirming typical web and network communication processes:
+
+1. DNS (Domain Name System)
+Purpose: Resolves domain names (like youtube.com) into IP addresses.
+
+Observed Behavior: DNS queries were made to resolve both YouTube and Google domains.
+
+Details: Standard UDP traffic on port 53 with corresponding DNS responses.
+
+2. ICMP (Internet Control Message Protocol)
+Purpose: Used for network diagnostics (e.g., the ping command).
+
+Observed Behavior: ICMP Echo Requests were sent to google.com, and Echo Replies were received successfully.
+
+Details: Indicates proper network connectivity and latency checks.
+
+3. TCP (Transmission Control Protocol)
+Purpose: Establishes and manages connections for reliable data transfer.
+
+Observed Behavior: TCP handshakes were observed, particularly when accessing YouTube and other background services.
+
+Details: Multiple TCP streams on ports like 443 (HTTPS) were identified.
+
+Optional Protocols Observed
+FTP (File Transfer Protocol)
+Unexpectedly, a few FTP control packets were captured.
+
+Likely due to background services or unrelated network traffic from the same LAN or VM environment.
+
+HTTPS
+Used when accessing youtube.com.
+
+Though encrypted, packet metadata (such as TLS handshakes and server IPs) confirmed encrypted web activity.
